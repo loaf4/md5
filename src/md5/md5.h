@@ -2,9 +2,11 @@
 #define MD5_H
 
 #include <alloca.h>
+#include <cstddef>
 #include <cstdint>
 #include <vector>
 #include <string>
+#include <array>
 
 // constants for shifting bits in every round 
 #define R11 7
@@ -46,27 +48,34 @@ const uint32_t T[64] {
 
 class MD5 {
 
-    std::vector<uint8_t> output;
-    uint32_t buffer[4];
+    std::array<uint8_t, 16> digest;
+    std::array<uint8_t, 64> buffer;
+    std::array<uint32_t, 4> state;
+    std::array<uint32_t, 2> count;
+    bool finalized;
 
-    static uint32_t cyclic_rotate_left(uint32_t a, int n);
-    static uint32_t F(uint32_t x, uint32_t y, uint32_t z);
-    static uint32_t G(uint32_t x, uint32_t y, uint32_t z);
-    static uint32_t H(uint32_t x, uint32_t y, uint32_t z);
-    static uint32_t I(uint32_t x, uint32_t y, uint32_t z);
-    static void FF(uint32_t& a, uint32_t b, uint32_t c, uint32_t d, uint32_t k, uint32_t s, uint32_t i);
-    static void GG(uint32_t& a, uint32_t b, uint32_t c, uint32_t d, uint32_t k, uint32_t s, uint32_t i);
-    static void HH(uint32_t& a, uint32_t b, uint32_t c, uint32_t d, uint32_t k, uint32_t s, uint32_t i);
-    static void II(uint32_t& a, uint32_t b, uint32_t c, uint32_t d, uint32_t k, uint32_t s, uint32_t i);
+    static inline uint32_t cyclic_rotate_left(uint32_t a, int n);
+    static inline uint32_t F(uint32_t x, uint32_t y, uint32_t z);
+    static inline uint32_t G(uint32_t x, uint32_t y, uint32_t z);
+    static inline uint32_t H(uint32_t x, uint32_t y, uint32_t z);
+    static inline uint32_t I(uint32_t x, uint32_t y, uint32_t z);
+    static inline void FF(uint32_t& a, uint32_t b, uint32_t c, uint32_t d, uint32_t k, uint32_t s, uint32_t i);
+    static inline void GG(uint32_t& a, uint32_t b, uint32_t c, uint32_t d, uint32_t k, uint32_t s, uint32_t i);
+    static inline void HH(uint32_t& a, uint32_t b, uint32_t c, uint32_t d, uint32_t k, uint32_t s, uint32_t i);
+    static inline void II(uint32_t& a, uint32_t b, uint32_t c, uint32_t d, uint32_t k, uint32_t s, uint32_t i);
 
-    static void encode(const std::vector<uint32_t>& input, std::vector<uint8_t>& output);
-    static void decode(const std::vector<uint8_t>& input, std::vector<uint32_t>& output);
-    void encode_block(const std::vector<uint32_t>& data, int offset);
-    void encode_mess(const std::vector<uint32_t>& input);
+    static std::vector<uint8_t> encode(const std::vector<uint32_t>& input, size_t len);
+    static std::vector<uint32_t> decode(const std::vector<uint8_t>& input, size_t len, int offset);
+    void encode_block(const std::vector<uint8_t>& input, int offset);
+    void encode_mess(const std::vector<uint8_t>& input, size_t len);
+    MD5& finalize();
+
+    void init();
 public:
     MD5();
     MD5(const std::string& input);
     void hash_string(const std::string& input);
+    void print_hash();
 };
 
 #endif
