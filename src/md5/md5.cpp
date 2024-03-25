@@ -1,7 +1,9 @@
 #include "md5.h"
 #include <algorithm>
+#include <format>
 #include <array>
 #include <cstddef>
+#include <iomanip>
 #include <iostream>
 #include <cstdint>
 #include <iterator>
@@ -220,7 +222,7 @@ MD5& MD5::finalize() {
 
 void MD5::print_hash() {
     for (int i {}; i < 16; ++i) {
-        std::cout << std::hex << (int)digest[i];
+        std::cout << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(digest[i]);
     }
     std::cout << std::endl;
 }
