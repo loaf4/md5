@@ -226,3 +226,7 @@ void MD5::print_hash() {
     }
     std::cout << std::endl;
 }
+
+std::array<uint8_t, 16> MD5::get_digest() {
+    return digest;
+}

@@ -1,4 +1,5 @@
 #include "md5.h"
+#include "analysis.h"
 
 #include <iostream>
 
@@ -19,10 +20,8 @@ int main(int argc, char* argv[]) {
     std::cout << "input: " << cc << std::endl << "hash: ";
     c.print_hash();
     std::cout << std::string(100, '-') << std::endl;
-    std::string dd(10000, 'q');
-    MD5 d(dd);
-    std::cout << "input: " << dd << std::endl << "hash: ";
-    d.print_hash();
+
+    second_prototype();
 
     return 0;
 }
