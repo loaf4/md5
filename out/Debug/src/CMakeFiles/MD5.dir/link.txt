@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wall -g CMakeFiles/MD5.dir/main.cpp.o -o MD5  md5/libMD5_lib.a 

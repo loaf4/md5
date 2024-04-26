@@ -75,6 +75,8 @@ public:
     MD5();
     MD5(const std::string& input);
     void hash_string(const std::string& input);
+    std::string string_digest();
+    std::string hex_string_digest();
     void print_hash();
     std::array<uint8_t, 16> get_digest();
 };

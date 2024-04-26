@@ -1,27 +1,25 @@
 #include "md5.h"
-#include "analysis.h"
+#include "elgamal.h"
 
+#include <boost/multiprecision/fwd.hpp>
 #include <iostream>
+#include <utility>
+
+namespace mp = boost::multiprecision;
 
 int main(int argc, char* argv[]) {
 
-    std::string aa("");
-    MD5 a(aa);
-    std::cout << "input: " << aa << std::endl << "hash: ";
-    a.print_hash();
-    std::cout << std::string(100, '-') << std::endl;
-    std::string bb("md5");
-    MD5 b(bb);
-    std::cout << "input: " << bb << std::endl << "hash: ";
-    b.print_hash();
-    std::cout << std::string(100, '-') << std::endl;
-    std::string cc("hello world");
-    MD5 c(cc);
-    std::cout << "input: " << cc << std::endl << "hash: ";
-    c.print_hash();
-    std::cout << std::string(100, '-') << std::endl;
+    Elgamal e;
 
-    second_prototype();
+    std::cout << "Message: 123456789" << std::endl << "Decrypted message: ";
+    std::pair<mp::cpp_int, mp::cpp_int> key = e.encrypt("123456789");
+    mp::cpp_int res = e.decrypt(key);
+    std::cout << res << std::endl;
+
+    std::cout << "Message for signature: 1234" << std::endl;
+    std::pair<mp::cpp_int, mp::cpp_int> sign = e.signature("1234");
+    std::cout << "Trying to auth with: 12345, res = " << e.signature_auth("12345", sign) << std::endl;
+    std::cout << "Trying to auth with: 1234, res = " << e.signature_auth("1234", sign) << std::endl;
 
     return 0;
 }

@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/loaf/Documents/cppProjs/md5/out/Debug/src",
+  "command": "/usr/bin/c++  -I/home/loaf/Documents/cppProjs/md5/src/md5 -Wall -g -std=gnu++20 -o CMakeFiles/MD5.dir/main.cpp.o -c /home/loaf/Documents/cppProjs/md5/src/main.cpp",
+  "file": "/home/loaf/Documents/cppProjs/md5/src/main.cpp",
+  "output": "src/CMakeFiles/MD5.dir/main.cpp.o"
+},
+{
+  "directory": "/home/loaf/Documents/cppProjs/md5/out/Debug/src/md5",
+  "command": "/usr/bin/c++   -Wall -g -std=gnu++20 -o CMakeFiles/MD5_lib.dir/md5.cpp.o -c /home/loaf/Documents/cppProjs/md5/src/md5/md5.cpp",
+  "file": "/home/loaf/Documents/cppProjs/md5/src/md5/md5.cpp",
+  "output": "src/md5/CMakeFiles/MD5_lib.dir/md5.cpp.o"
+},
+{
+  "directory": "/home/loaf/Documents/cppProjs/md5/out/Debug/src/md5",
+  "command": "/usr/bin/c++   -Wall -g -std=gnu++20 -o CMakeFiles/MD5_lib.dir/elgamal.cpp.o -c /home/loaf/Documents/cppProjs/md5/src/md5/elgamal.cpp",
+  "file": "/home/loaf/Documents/cppProjs/md5/src/md5/elgamal.cpp",
+  "output": "src/md5/CMakeFiles/MD5_lib.dir/elgamal.cpp.o"
+},
+{
+  "directory": "/home/loaf/Documents/cppProjs/md5/out/Debug/src/md5",
+  "command": "/usr/bin/c++   -Wall -g -std=gnu++20 -o CMakeFiles/MD5_lib.dir/analysis.cpp.o -c /home/loaf/Documents/cppProjs/md5/src/md5/analysis.cpp",
+  "file": "/home/loaf/Documents/cppProjs/md5/src/md5/analysis.cpp",
+  "output": "src/md5/CMakeFiles/MD5_lib.dir/analysis.cpp.o"
+}
+]

@@ -4,9 +4,11 @@
 #include <array>
 #include <cstddef>
 #include <iomanip>
+#include <ios>
 #include <iostream>
 #include <cstdint>
 #include <iterator>
+#include <sstream>
 #include <vector>
 
 MD5::MD5() {
@@ -218,6 +220,21 @@ MD5& MD5::finalize() {
     }
 
     return *this;
+}
+
+std::string MD5::string_digest() {
+    std::stringstream ss;
+    ss << std::hex;
+
+    for (size_t i {}; i != 16; ++i) {
+         ss << std::setfill('0') << std::setw(2) << static_cast<int>(digest[i]);
+    }
+
+    return ss.str();
+}
+
+std::string MD5::hex_string_digest() {
+    return "0x" + string_digest();
 }
 
 void MD5::print_hash() {

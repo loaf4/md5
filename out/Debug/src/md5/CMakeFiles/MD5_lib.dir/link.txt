@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMD5_lib.a CMakeFiles/MD5_lib.dir/md5.cpp.o CMakeFiles/MD5_lib.dir/elgamal.cpp.o CMakeFiles/MD5_lib.dir/analysis.cpp.o
+/usr/bin/ranlib libMD5_lib.a
